@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="1.1.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.Json" Version="1.4.0" />
+    <PackageReference Include="Amazon.Lambda.DynamoDBEvents" Version="1.1.0" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.3.17.9" />
+    <PackageReference Include="AWSSDK.SimpleNotificationService" Version="3.3.101.6" />
+    <PackageReference Include="AWSSDK.SimpleSystemsManagement" Version="3.3.102.2" />
+    <PackageReference Include="AWSSDK.StepFunctions" Version="3.3.100.17" />
+    <PackageReference Include="AWSXRayRecorder" Version="2.6.1" />
+  </ItemGroup>
+</Project>

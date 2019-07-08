@@ -1,0 +1,61 @@
+﻿@model LeaveWebApp.Models.Leave
+
+@{
+    ViewData["Title"] = "Leave Request";
+}
+<h1>Submit Leave Request</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="LeaveRequest">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <input asp-for="EmployeeID" class="form-control" />
+                <span asp-validation-for="EmployeeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label"></label>
+                <input asp-for="EmployeeName" class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveStartDate" class="control-label"></label>
+                <input asp-for="LeaveStartDate" class="form-control" />
+                <span asp-validation-for="LeaveStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveEndDate" class="control-label"></label>
+                <input asp-for="LeaveEndDate" class="form-control" />
+                <span asp-validation-for="LeaveEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Request" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewData["SaveStatus"] != null)
+{
+
+    @if (ViewData["SaveStatus"].ToString() == "True")
+    {
+        <hr />
+        <span style="color:forestgreen;font-size:large">Saved Successfully 🙌</span>
+        <hr />
+    }
+    else
+    {
+        <hr />
+        <span class="text-danger;font-size:large">Error Saving Record 💔 </span>
+        <hr />
+    }
+}
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

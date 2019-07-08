@@ -1,0 +1,45 @@
+﻿@model LeaveWebApp.Models.Leave[]
+
+@{
+    ViewData["Title"] = "Leaves List";
+}
+
+<h1>Leave Requests</h1>
+
+<hr />
+@if (Model.Length == 0)
+{
+    <h2>🦗 🦗 🦗 </h2>
+}
+else
+{
+    @foreach (var item in Model)
+    {
+        <p><b>Employee Name </b>- @item.EmployeeName</p>
+        <p><b>Employee ID</b> -@item.EmployeeID</p>
+        <p><b>Leave Start Date</b> - @item.LeaveStartDate</p>
+        <p><b>Leave End Date</b> - @item.LeaveEndDate</p>
+        <p><b>Leave ID </b> - @item.LeaveID</p>
+        if (item.LeaveStatus != null && item.LeaveStatus == "Pending")
+        {
+            <p style="border-bottom-color:red;background-color:yellow"><b>Leave Status </b> - @item.LeaveStatus</p>
+            <h3>😰</h3>
+            @Html.ActionLink("Approve 👍🏼 ", "Approve", "Home", item, new { @class = "btn btn-success btn-sm" })
+            <label> </label>
+            @Html.ActionLink("Reject 👎🏼 ", "Reject", "Home", item, new { @class = "btn btn-danger btn-sm" })
+            <label> </label>
+            @Html.ActionLink("Park aside 💤 ", "ParkAside", "Home", item, new { @class = "btn btn-warning btn-sm" })
+        }
+        else if (item.LeaveStatus != null && item.LeaveStatus == "Approved")
+        {
+            <p class="text-success"><b>Leave Status </b> - @item.LeaveStatus</p>
+            <h3>🎉</h3>
+        }
+        else if (item.LeaveStatus != null && item.LeaveStatus == "Rejected")
+        {
+            <p class="text-danger"><b>Leave Status </b> - @item.LeaveStatus</p>
+            <h3>😭</h3>
+        }
+        <hr />
+    }
+}

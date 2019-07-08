@@ -1,0 +1,26 @@
+{
+  "Comment": "Leave Application processor workflow",
+  "StartAt": "UpdateHRSystem",
+"States": {
+    "UpdateHRSystem": {
+      "Type": "Task",
+      "Resource": "<LAMBDA_ARN_FOR_UpdateHRSystem>",
+      "Next":"UpdatePayRoll",
+      "ResultPath":"$"
+    },
+    "UpdatePayRoll":{
+      "Type":"Task",
+      "Resource":"<LAMBDA_ARN_FOR_UpdatePayRoll>",
+      "Next":"SendNotifications"
+    },
+      "SendNotifications":{
+        "Type":"Task",
+        "Resource":"arn:aws:states:::sns:publish",
+        "Parameters": {
+          "TopicArn": "<SNS_TOPIC_ARN>",
+          "Message": "Leave Approval process complete !!"
+        },
+        "End":true
+      }
+    }
+  }

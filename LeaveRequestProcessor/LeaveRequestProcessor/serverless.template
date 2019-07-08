@@ -1,0 +1,34 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+  "Transform" : "AWS::Serverless-2016-10-31",
+  "Description" : "Starting template for an AWS Serverless Application.",
+  "Parameters" : {
+  },
+  "Resources" : {
+    "DefaultFunction" : {
+      "Type" : "AWS::Serverless::Function",
+      "Properties": {
+		"Tracing":"Active",
+		"FunctionName" : "LeaveRequestProcessor",
+        "Handler": "LeaveRequestProcessor::LeaveRequestProcessor.Function::FunctionHandler",
+        "Runtime": "dotnetcore2.1",
+        "CodeUri": "",
+        "Description": "Lambda function to process events on DynamoDB",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [ "AWSLambdaFullAccess", "AWSStepFunctionsFullAccess" ],
+        "Events": {
+			"DynamoDBEvent" : {
+				"Type" : "DynamoDB",
+				"Properties" : {
+					"StartingPosition" : "LATEST",
+					"Stream":"<DYNAMO_DB_STREAM_ARN>",
+					"BatchSize":100
+				}
+			}
+		}
+      }
+    }
+  }
+}

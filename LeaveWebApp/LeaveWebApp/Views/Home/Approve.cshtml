@@ -1,0 +1,30 @@
+﻿@model LeaveWebApp.Models.Leave
+
+@{
+    ViewData["Title"] = "Approval Status";
+}
+
+<h1>Approval Status</h1>
+
+<hr />
+
+<p><b>Employee Name </b>- @Model.EmployeeName</p>
+<p><b>Employee ID</b> -@Model.EmployeeID</p>
+<p><b>Leave Start Date</b> - @Model.LeaveStartDate</p>
+<p><b>Leave End Date</b> - @Model.LeaveEndDate</p>
+<p><b>Leave ID </b> - @Model.LeaveID</p>
+@if (@Model.LeaveStatus != null && @Model.LeaveStatus == "Approved")
+{
+    <p class="text-success"><b>Leave Status </b> - @Model.LeaveStatus</p>
+    <h1>🎉</h1>
+}
+else
+{
+    <p class="text-danger"><b>Leave Status </b> - @Model.LeaveStatus</p>
+    <h1>😭</h1>
+}
+<hr />
+
+<div>
+    <a asp-action="LeavesList"> < Leave Requests</a>
+</div>
