@@ -77,7 +77,7 @@ https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-w
 > This is a mock Lambda function that mimics a fake Payroll system update
 
 * Open Visual Studio
-* Open UpdatePayRoll.sln solution from UpdatePayRoll folder in this repo
+* Open **UpdatePayRoll.sln** solution from **UpdatePayRoll** folder in this repo
 * Right click on the project file and choose **Publish to AWS Lambda**
 * In the wizard that pops up, choose a region you want the solution to be deployed to and click **Next**
 * Select **AWSLambdaFullAccess** role for the **Role Name** dropdown and click **Upload**
