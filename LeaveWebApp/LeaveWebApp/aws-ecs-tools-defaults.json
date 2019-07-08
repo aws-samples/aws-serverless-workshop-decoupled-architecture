@@ -13,7 +13,7 @@
     "task-definition-name"     : "LeaveWebApp",
     "task-cpu"                 : "256",
     "task-memory"              : "512",
-    "task-definition-task-role" : "arn:aws:iam::831210339789:role/ecsTaskExecutionRole",
+    "task-definition-task-role" : "arn:aws:iam::<ACCOUNT_ID>:role/ecsTaskExecutionRole",
     "task-execution-role"       : "ecsTaskExecutionRole",
     "container-name"            : "LeaveWebApp",
     "container-port-mapping"    : "80:80",
@@ -23,7 +23,7 @@
     "desired-count"                   : 1,
     "deployment-minimum-healthy-percent" : 50,
     "deployment-maximum-percent"         : 200,
-    "elb-target-group"                   : "arn:aws:elasticloadbalancing:us-east-1:831210339789:targetgroup/NewLeaveWebApp/d4422798b18fa9d3",
+    "elb-target-group"                   : "arn:aws:elasticloadbalancing:us-east-1:<ACCOUNT_ID>:targetgroup/NewLeaveWebApp/d4422798b18fa9d3",
     "elb-container-port"                 : 80,
     "vstoolkit-deployment-mode"          : "DeployService"
 }
